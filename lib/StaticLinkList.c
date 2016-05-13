@@ -10,7 +10,7 @@ typedef struct
 
 int InitList(StaticLinkList space);
 int Malloc_SLL(StaticLinkList space);
-int ListInstert(StaticLinkList L,int i,int e);
+int ListInsert(StaticLinkList L,int i,int e);
 int ListDelete(StaticLinkList L,int i);
 void Free_SSL(StaticLinkList space,int k);
 int ListLength(StaticLinkList L);
@@ -19,7 +19,22 @@ int ListLength(StaticLinkList L);
 int main()
 {
 	//test code
-
+	
+	StaticLinkList SLL;
+	int index = 0;
+	if(InitList(SLL))
+	{
+		printf("init ok! \n");
+	}
+	printf("1 list length = %d \n",ListLength(SLL));
+	for(index = 1;index < 21;index++)
+	{
+		if(ListInsert(SLL,index,index))
+		{
+			printf("insert successful!value = %d \n",index);
+		}
+	}
+	printf("2 list length = %d \n",ListLength(SLL));
 	return 1;
 }
 
@@ -44,7 +59,7 @@ int Malloc_SLL(StaticLinkList space)
 	return i;
 }
 
-int ListInstert(StaticLinkList L,int i,int e)
+int ListInsert(StaticLinkList L,int i,int e)
 {
 	int j,k,l;
 	k = MAXSIZE - 1;
