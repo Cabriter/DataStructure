@@ -37,7 +37,7 @@ int InitList(StaticLinkList space)
 
 int Malloc_SLL(StaticLinkList space)
 {
-	int i = sspace[0].cur;
+	int i = space[0].cur;
 	if(space[0].cur)
 	  space[0].cur = space[i].cur;
 
@@ -47,10 +47,10 @@ int Malloc_SLL(StaticLinkList space)
 int ListInstert(StaticLinkList L,int i,int e)
 {
 	int j,k,l;
-	k = MAX_SIZE - 1;
+	k = MAXSIZE - 1;
 	if(i < 1 || i > ListLength(L) + 1)
 	  return 0;
-	j = Malloc_SSL(L);
+	j = Malloc_SLL(L);
 	if(j)
 	{
 		L[j].data = e;
@@ -72,8 +72,8 @@ int ListDelete(StaticLinkList L,int i)
 	{
 		return 0;
 	}
-	k = MAX_SIZE - 1;
-	for(j = 1;j < = i - 1;j++)
+	k = MAXSIZE - 1;
+	for(j = 1;j <= i - 1;j++)
 	{
 		k = L[k].cur;
 	}
@@ -84,7 +84,7 @@ int ListDelete(StaticLinkList L,int i)
 
 }
 
-int Free_SSL(StaticLinkList space,int k)
+void Free_SSL(StaticLinkList space,int k)
 {
 	space[k].cur = space[0].cur;
 	space[0].cur = k;
